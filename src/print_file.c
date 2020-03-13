@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboualla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oboualla <oboualla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 16:28:00 by oboualla          #+#    #+#             */
-/*   Updated: 2019/09/18 18:49:04 by oboualla         ###   ########.fr       */
+/*   Updated: 2020/03/13 16:29:57 by oboualla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,14 @@ int			print_file(char *str, char *comp, char **join)
 	int		flen;
 	int		howmany[2];
 
+	if (!calc_probabilities(str))
+		return (1);
 	if (!(tab = ft_strsplit(str, ':')))
 		return (-1);
 	if (!(tab[1]))
 		return (putcomplet_cmd(tab, comp, join));
 	flen = get_filelen(tab, &howmany[0]);
 	howmany[1] = howmany[0];
-	if (calc_probabilities(str) == 1)
-		print_probabilities(tab, flen, howmany);
+	print_probabilities(tab, flen, howmany);
 	return (1);
 }
